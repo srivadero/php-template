@@ -5,12 +5,33 @@ This project requires php and composer to be installed on your system.
 
 # Instalation
 
-1. Clone this repo. From your terminal go to your working folder and run:
+#### Clone this repo. From your terminal go to your working folder and run:
 
+```
 git clone https://github.com/srivadero/php-template.git
+```
 
-2. Install dependencies. From your working folder run:
+#### Install dependencies. From your working folder run:
 
+```
 composer uodate
+```
 
-3. Write your code and deploy
+#### Write your code and deploy
+
+# Deploy on Heroku
+First setup your git repo on  running these commands:
+
+```
+git init
+heroku login
+heroku create your-appname
+```
+
+Then deploy your app on each release running the following commands:
+
+```
+git add .
+git commit -m "your release message"
+git push heroku main
+```
