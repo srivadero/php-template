@@ -1,52 +1,55 @@
 @import "../vendor/twbs/bootstrap/scss/bootstrap.scss";
 
 // GENERIC FONT
-body {
-  font-family: "Poppins", "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+// body {
+//   font-family: "Poppins", "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+// }
+
+// MAIN SECTIONS
+main{
+  section {
+
+      padding: 3rem 0;
+        p {
+          text-align: justify;
+        } // end p
+      }
+        .title {
+          margin-bottom: 3rem;
+          text-align: center;
+      
+          h2 {
+            padding: 1rem 0;
+            position: relative;
+            text-align: inherit;
+      
+            &:after {
+              content: "";
+              position: absolute;
+              background-color: $primary;
+              bottom: 0;
+              left: calc(50% - 50px);
+              width: 100px;
+              height: 1px;
+              z-index: 10;
+              border-radius: 2px;
+            }
+          } // end h2
+      
+          p {
+            @include font-size($lead-font-size);
+            font-weight: $lead-font-weight;
+            font-style: italic;
+            text-align: inherit;
+          } // end p
+        } // end title
 }
 
-// GENERIC SECTION
-section {
-  //     // &:nth-of-type(even){
-  //     //     background-color: $bkg-5;
-  //     // }
-
-  padding: 60px 0;
-
-  p {
-    text-align: justify;
-  } // end p
-
-  .title {
-    margin-bottom: 3rem;
-    text-align: center;
-
-    h2 {
-      padding: 1rem 0;
-      position: relative;
-      text-align: inherit;
-
-      &:before {
-        content: "";
-        position: absolute;
-        background-color: $primary;
-        top: -1.5rem;
-        left: calc(50% - 50px);
-        width: 100px;
-        height: 5px;
-        z-index: 10;
-        border-radius: 2px;
-      }
-    } // end h2
-
-    p {
-      @include font-size($lead-font-size);
-      font-weight: $lead-font-weight;
-      font-style: italic;
-      text-align: inherit;
-    } // end p
-  } // end title
-} // end section
+// section {
+//   //     // &:nth-of-type(even){
+//   //     //     background-color: $bkg-5;
+//   //     // }
+// } // end section
 
 // ICON LIST
 ul.icon-list {
@@ -55,28 +58,24 @@ ul.icon-list {
 
   li {
     padding-left: 1.5rem;
+    padding-bottom: 0.5rem;
     position: relative;
 
     i {
       position: absolute;
       left: 0;
-      top: 0;
+      top: 0.25rem;
       color: $primary;
-    }
-  }
-} // end icon-list
+    } // end i
+  } // end li
+} // end ICON LIST
 
+// HERO
 .hero {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: minmax(400px, 80vh);
-  // margin-top: 48px;
-  // padding-top: 0;
-  // grid-column-gap: 0px;
-  // grid-row-gap: 0px;
-  // align-content: center;
-  // justify-content: center;
-  
+
   // Create three grid areas (boxes) that overlap each other, essentially creating three layers.
   // Grid box 1 (layer 1): Image
   // Grid box 2 (layer 2): Gradient overlay
@@ -92,8 +91,8 @@ ul.icon-list {
 
   .hero-image-div {
     .hero-image {
-      display: grid;
-      min-width: 350px; // Do not resize to smaller than this.
+      // display: grid;
+      // min-width: 350px; // Do not resize to smaller than this.
       width: 100%;
       height: 100%;
       object-fit: cover; // Using this so the image can be any size and still look halfway decent.
@@ -101,14 +100,13 @@ ul.icon-list {
   }
 
   .hero-overlay-div {
-    // background: green;
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
   }
 
-  .hero-content-div{
+  .hero-content-div {
     align-items: center;
   }
-}
+} // END HERO
 
 // ============================================================================
 
