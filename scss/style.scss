@@ -1,182 +1,204 @@
-@import '../vendor/twbs/bootstrap/scss/bootstrap.scss';
+@import "../vendor/twbs/bootstrap/scss/bootstrap.scss";
 
-$bkg-1: theme-color-level("primary", 7.5);
-$bkg-2: theme-color-level("primary", 5);
-$bkg-3: theme-color-level("primary", 0);
-$bkg-4: theme-color-level("primary", -5);
-$bkg-5: theme-color-level("primary", -7.5);
-
+// GENERIC FONT
 body {
-    font-family: "Poppins", "Roboto", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Poppins", "Roboto", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.darker {
-    background-color: $bkg-1;
-}
-.dark {
-    background-color: $bkg-2;
-}
-.normal {
-    background-color: $bkg-3;
-}
-.light {
-    background-color: $bkg-4;
-}
-.lighter {
-    background-color: $bkg-5;
-}
-
-#hero {
-    background: url("/public/images/hero-img.jpg") top center no-repeat;
-    background-size: cover;
-    height: 85vh;
-    padding-top: 64px;
-    position: relative;
-
-    &:before {
-        background: rgba(0, 0, 0, 0.5);
-        bottom: 0;
-        content: "";
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-
-    .btn-get-started {
-        // font-family: "Raleway", sans-serif;
-        // font-weight: 500;
-        // font-size: 16px;
-        letter-spacing: 1px;
-        display: inline-block;
-        padding: 10px 30px;
-        border-radius: 4px;
-        transition: 0.5s;
-        margin-top: 30px;
-        color: $white;
-        background: $primary;
-        border: 2px solid $primary;
-
-        &:hover {
-            background: transparent;
-            border-color: $white;
-        }
-    }
-}
-
+// GENERIC SECTION
 section {
-    // &:nth-of-type(even){
-    //     background-color: $bkg-5;
-    // }
+  //     // &:nth-of-type(even){
+  //     //     background-color: $bkg-5;
+  //     // }
 
-    padding: 60px 0;
+  padding: 60px 0;
 
-    .title {
-        margin-bottom: 3rem;
+  p {
+    text-align: justify;
+  } // end p
 
-        h2 {
-            padding: 1rem 0;
-            position: relative;
-            text-align: center;
+  .title {
+    margin-bottom: 3rem;
+    text-align: center;
 
-            &:before {
-                content: "";
-                position: absolute;
-                background-color: $primary;
-                bottom: 0.5rem;
-                left: calc(50% - 50px);
-                width: 100px;
-                height: 5px;
-                z-index: 10;
-                border-radius: 2px;
-            }
-        }
+    h2 {
+      padding: 1rem 0;
+      position: relative;
+      text-align: inherit;
 
-        p {
-            @include font-size($lead-font-size);
-            font-weight: $lead-font-weight;
-            text-align: center;
-            font-style: italic;
-        }
-    }
-}
+      &:before {
+        content: "";
+        position: absolute;
+        background-color: $primary;
+        top: -1.5rem;
+        left: calc(50% - 50px);
+        width: 100px;
+        height: 5px;
+        z-index: 10;
+        border-radius: 2px;
+      }
+    } // end h2
 
-#footer {
-    background-color: $gray-800;
-    color: white;
+    p {
+      @include font-size($lead-font-size);
+      font-weight: $lead-font-weight;
+      font-style: italic;
+      text-align: inherit;
+    } // end p
+  } // end title
+} // end section
+
+// ICON LIST
+ul.icon-list {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    padding-left: 1.5rem;
     position: relative;
 
-    a {
-        color: inherit;
-        text-decoration: none;
-
-        &:hover {
-            color: $primary;
-        }
-    }
-
-    .footer-bottom {
-        background-color: $gray-900;
-    }
-
-    .social {
-        display: inline-block;
-        text-align: center;
-        line-height: 48px;
-        width: 48px;
-        height: 48px;
-        position: absoltute;
-        border-radius: 50%;
-        border: 1px solid $primary;
-        color: $primary;
-
-        &:hover {
-            color: $white;
-            background-color: $primary;
-
-            i {
-                color: $white;
-            }
-        }
-    }
-
     i {
-        color: $primary;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: $primary;
     }
+  }
+} // end icon-list
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(400px, 80vh);
+  // margin-top: 48px;
+  // padding-top: 0;
+  // grid-column-gap: 0px;
+  // grid-row-gap: 0px;
+  // align-content: center;
+  // justify-content: center;
+  
+  // Create three grid areas (boxes) that overlap each other, essentially creating three layers.
+  // Grid box 1 (layer 1): Image
+  // Grid box 2 (layer 2): Gradient overlay
+  // Grid box 3 (layer 3): Call to action text/content
+  .hero-image-div,
+  .hero-overlay-div,
+  .hero-content-div {
+    display: grid;
+    grid-area: 1/1/2/2;
+    height: 100%;
+    width: 100%;
+  }
+
+  .hero-image-div {
+    .hero-image {
+      display: grid;
+      min-width: 350px; // Do not resize to smaller than this.
+      width: 100%;
+      height: 100%;
+      object-fit: cover; // Using this so the image can be any size and still look halfway decent.
+    }
+  }
+
+  .hero-overlay-div {
+    // background: green;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  .hero-content-div{
+    align-items: center;
+  }
 }
 
-.alumno {
-    img {
-        width: 60%;
-        border-radius: 50%;
-        border: 5px solid $primary;
-    }
-}
+// ============================================================================
 
-.card-service {
-    // display: flex;
-    border: 1px solid $primary;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    i {
-        font-size: 48px;
-        color: $primary;
-    }
-    h4 {
-    }
-    p {
-    }
-}
+// $bkg-1: theme-color-level("primary", 7.5);
+// $bkg-2: theme-color-level("primary", 5);
+// $bkg-3: theme-color-level("primary", 0);
+// $bkg-4: theme-color-level("primary", -5);
+// $bkg-5: theme-color-level("primary", -7.5);
 
-ul.icon-list{
-    list-style: none;
-    padding-left: 0;
-    
-    i{
-        font-size: 1em;
-        color: $primary;
-        padding-right: 0.5em;
-    }
-}
+// .darker {
+//     background-color: $bkg-1;
+// }
+// .dark {
+//     background-color: $bkg-2;
+// }
+// .normal {
+//     background-color: $bkg-3;
+// }
+// .light {
+//     background-color: $bkg-4;
+// }
+// .lighter {
+//     background-color: $bkg-5;
+// }
+
+// #footer {
+//     background-color: $gray-800;
+//     color: white;
+//     position: relative;
+
+//     a {
+//         color: inherit;
+//         text-decoration: none;
+
+//         &:hover {
+//             color: $primary;
+//         }
+//     }
+
+//     .footer-bottom {
+//         background-color: $gray-900;
+//     }
+
+//     .social {
+//         display: inline-block;
+//         text-align: center;
+//         line-height: 48px;
+//         width: 48px;
+//         height: 48px;
+//         position: absoltute;
+//         border-radius: 50%;
+//         border: 1px solid $primary;
+//         color: $primary;
+
+//         &:hover {
+//             color: $white;
+//             background-color: $primary;
+
+//             i {
+//                 color: $white;
+//             }
+//         }
+//     }
+
+//     i {
+//         color: $primary;
+//     }
+// }
+
+// .alumno {
+//     img {
+//         width: 60%;
+//         border-radius: 50%;
+//         border: 5px solid $primary;
+//     }
+// }
+
+// .card-service {
+//     // display: flex;
+//     border: 1px solid $primary;
+//     border-radius: 0.5rem;
+//     padding: 1rem;
+//     margin-bottom: 1rem;
+//     text-align: center;
+//     i {
+//         font-size: 48px;
+//         color: $primary;
+//     }
+//     h4 {
+//     }
+//     p {
+//     }
+// }
